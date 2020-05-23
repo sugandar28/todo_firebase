@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+  </head>
+
+  <body>
+    <h1>Cloud Cafe</h1>
+
+    <div class="content">
+      <form id="todo-form">
+        <input type="text" name="task" placeholder="Enter Tasks" />
+        <input type="text" name="priority" placeholder="priority of task" />
+        <button>Add Todo</button>
+      </form>
+
+      <ul id="todo-list"></ul>
+    </div>
+
+    <!-------fire base set uo-------->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyD81zUMpa1S1Ku-Ys4RqXiXK4Ll1Caul7Q",
+        authDomain: "todoapp-firebase-a1b31.firebaseapp.com",
+        databaseURL: "https://todoapp-firebase-a1b31.firebaseio.com",
+        projectId: "todoapp-firebase-a1b31",
+        storageBucket: "todoapp-firebase-a1b31.appspot.com",
+        messagingSenderId: "280736237048",
+        appId: "1:280736237048:web:cbc67ed34337128b9dc20d",
+        measurementId: "G-NN2FNG6RMX",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      //instance for database
+      const db = firebase.firestore();
+      //setting for working wit snapshot in firebase
+      // db.settings({ timestampsInSnapshots: true });
+    </script>
+
+    <!--------------------------------->
+
+    <script src="app.js"></script>
+  </body>
+</html>
