@@ -27,16 +27,16 @@ const renderTodo = (doc) => {
 };
 
 //getting the data
-db.collection("Todo")
-  .orderBy("priority") //we can sort based on conditions
-  // we can also combile orderBy and where (setpu index)
-  //.where('Task','==',"design")   //( we can get data based on condintions  (making Quires) )
-  .get()
-  .then((snapshot) => {
-    snapshot.docs.forEach((doc) => {
-      renderTodo(doc);
-    });
-  });
+// db.collection("Todo")
+//   // .orderBy("priority") //we can sort based on conditions
+//   // // we can also combile orderBy and where (setpu index)
+//   // //.where('Task','==',"design")   //( we can get data based on condintions  (making Quires) )
+//   .get()
+//   .then((snapshot) => {
+//     snapshot.docs.forEach((doc) => {
+//       renderTodo(doc);
+//     });
+//   });
 
 //saving the data
 
@@ -49,3 +49,18 @@ Form.addEventListener("submit", (e) => {
   Form.task.value = "";
   Form.priority.value = "";
 });
+
+//added real time listner
+db.collection("Todo")
+  .orderBy("priority")
+  .onSnapshot((snapshot) => {
+    let changes = snapshot.docChanges();
+    changes.forEach((change) => {
+      if (change.type == "added") {
+        renderTodo(change.doc);
+      } else if (change.type == "removed") {
+        let li = TodoList.querySelector("[data-id=" + change.doc.id + "]");
+        TodoList.removeChild(li);
+      }
+    });
+  });
