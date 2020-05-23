@@ -64,3 +64,25 @@ db.collection("Todo")
       }
     });
   });
+
+/*
+
+-------with update()
+id of the particular document you want to edit
+db.collection("Todo").doc(id).update({
+  name:'updated'
+})
+
+----with set
+db.collection("Todo").doc(id).set({
+  name:'updated'
+})
+
+note 
+update:
+only change the value you eneterd into updaye method 
+
+set: it update all the value in the document
+
+
+*/
